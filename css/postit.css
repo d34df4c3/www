@@ -1,0 +1,58 @@
+UL.postit
+{
+    margin: 10px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+UL.postit LI
+{
+    margin-bottom: 3px;
+    font-family: "Comic Sans MS", cursive;
+}
+
+UL.postit .checkbox
+{
+    display: block;
+    float: left;
+    border: 1px solid white;
+    margin: 5px;
+    height: 18px;
+    width: 18px;
+}
+
+UL.postit .checkbox SPAN
+{
+    margin-top: -5px;
+    margin-left: 1px;
+}
+
+UL.postit .message
+{
+    margin-left: 30px;
+    padding: 5px;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+UL.postit .add
+{
+    margin-left: 30px;
+}
+
+UL.postit .message:hover
+{
+    background-color: rgba(255, 255, 255, 0.30);
+}
+
+UL.postit .message.done
+{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+UL.postit .message.high
+{
+    background-color: rgba(162, 0, 37, 0.5);
+    border: 1px solid rgba(162, 0, 37, 0.9);
+    font-weight: bold;
+}

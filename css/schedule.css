@@ -1,0 +1,89 @@
+.schedule-list
+{
+    padding-left: 20px;
+    margin-left: 35px;
+    border-left: 2px solid white;
+    display: block;
+    overflow: visible;
+}
+    
+.schedule-item
+{
+    display: block;
+    padding: 0;
+    width: 230px;
+    clear: both;
+    min-height: 40px;
+}
+
+.schedule-item .time
+{
+    display: block;
+    float: left;
+    margin-left: -43px;
+    margin-top: 10px;
+    width: 42px; height: 29px;
+    border: 2px solid white;
+    background-color: rgba(162, 0, 37, 1);
+    color: white;
+    border-radius: 40px;
+    text-align: center;
+    padding: 0px;
+    line-height: 25px;
+}
+
+.schedule-list .date
+{
+    display: block;
+    float: left;
+    margin: 5px;
+    margin-left: -22px;
+    padding-left: 10px;
+    width: 250px; height: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 2px dotted rgba(162, 0, 37, 1);
+    color: white;
+    line-height: 16px;
+}
+    
+.schedule-item .description
+{
+    display: block;
+    float: left;
+    width: 220px;
+    min-height: 40px;
+    margin-top: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+    overflow: visible;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.schedule-item .description:hover
+{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.schedule-item .description.important
+{
+    border: 2px dashed rgba(255, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+
+.schedule-item .description.done
+{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.schedule-item .description .description-content
+{
+    margin-top: 5px;
+}
+
+.schedule-item .description .description-content p
+{
+    margin: 0;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/metro.css" rel="stylesheet">
+    <link href="css/metro-icons.css" rel="stylesheet">
+    <link href="css/schedule.css" rel="stylesheet">
+    <link href="css/postit.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/metro.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/Date.js"></script>
+
+    <script src="js/Router/Router.js"></script>
+    <script src="js/Router/SX1Router.js"></script>
+    <script src="js/Router/ForecastRouter.js"></script>
+    <script src="js/Router/RadioRouter.js"></script>
+
+    <script src="js/View/ModelListener.js"></script>
+    <script src="js/Model/Model.js"></script>
+    <script src="js/Model/DriveModel.js"></script>
+    <script src="js/Model/HubicModel.js"></script>
+    <script src="js/Model/CalendarModel.js"></script>
+    <script src="js/Model/ForecastModel.js"></script>
+    <script src="js/Model/RadioModel.js"></script>
+    <script src="js/Model/PostItModel.js"></script>
+	<script src="js/Model/MagicHomeModel.js"></script>
+	<script src="js/Model/DualRelayModel.js"></script>
+    
+    <script src="js/View/View.js"></script>
+    <script src="js/View/DriveTileView.js"></script>
+    <script src="js/View/DriveSmallTileView.js"></script>
+    <script src="js/View/HubicTileView.js"></script>
+    <script src="js/View/HubicSmallTileView.js"></script>
+    <script src="js/View/CalendarTileView.js"></script>
+    <script src="js/View/CalendarSmallTileView.js"></script>
+    <script src="js/View/ForecastTileView.js"></script>
+    <script src="js/View/ForecastSmallTileView.js"></script>
+    <script src="js/View/RadioTileView.js"></script>
+    <script src="js/View/PostItTileView.js"></script>
+    <script src="js/View/PostItSmallTileView.js"></script>
+	<script src="js/View/MagicHomeSmallTileView.js"></script>
+	<script src="js/View/SwitchSmallTileView.js"></script>
+    
+    <script src="js/Content.js"></script>
+    <script src="js/View/IconContentView.js"></script>
+    <script src="js/View/MainContentView.js"></script>
+    <script src="js/View/CalendarContentView.js"></script>
+    <script src="js/View/ComputerContentView.js"></script>
+    <script>
+
+var content = new Content();
+
+$(document).ready(function()
+{
+        /* Content */
+        content.addContentView('icon', new IconContentView("#content"));
+        content.addContentView('main', new MainContentView("#content"));
+        content.addContentView('calendar', new CalendarContentView("#content"));
+        content.addContentView('computer', new ComputerContentView("#content"));
+        content.render('icon');
+
+        /* SX1 Router */
+        var sx1 = new SX1Router();
+///*
+        var chronoDrive = new DriveModel(sx1, "Chronoscaphe");
+        chronoDrive.addListener(content.addView(new DriveTileView("#ChronoDriveView")));
+        chronoDrive.addListener(content.addView(new DriveSmallTileView("#ChronoDriveSmallView")));
+        chronoDrive.initialize();
+
+        var nathDrive = new DriveModel(sx1, "Nathalie");
+        nathDrive.addListener(content.addView(new DriveTileView("#NathDriveView")));
+        nathDrive.addListener(content.addView(new DriveSmallTileView("#NathDriveSmallView")));
+        nathDrive.initialize();
+
+        var hubic = new HubicModel(sx1);
+        hubic.addListener(content.addView(new HubicTileView("#HubicView")));
+        hubic.addListener(content.addView(new HubicSmallTileView("#HubicSmallView")));
+        hubic.initialize();
+
+        var calendar = new CalendarModel(sx1);
+        calendar.addListener(content.addView(new CalendarTileView("#CalendarView")));
+        calendar.addListener(content.addView(new CalendarSmallTileView("#CalendarSmallView-Julien", 1, 'Julien', 'bg-darkBlue')));
+        calendar.addListener(content.addView(new CalendarSmallTileView("#CalendarSmallView-Nathalie", 2, 'Nathalie', 'bg-magenta')));
+        calendar.initialize();
+
+        var mPostit = new PostItModel(sx1);
+        mPostit.addListener(content.addView(new PostItTileView("#PostItView")));
+        mPostit.addListener(content.addView(new PostItSmallTileView("#PostItSmallView")));
+        mPostit.initialize();
+		
+		var tvLed = new MagicHomeModel(sx1, "TV");
+		tvLed.addListener(content.addView(new MagicHomeSmallTileView("#TvMagicHome")));
+		tvLed.initialize();
+		
+		new SwitchSmallTileView("#SwitchLampSalon", new DualRelayModel("Salon"));
+//*/       
+        /* Forecast.io Router*/
+///*
+        var rForecast = new ForecastRouter();
+
+        var mForecastNeufchateau = new ForecastModel(rForecast, 'Neufchateau', 49.81389, 5.44517);
+        var mForecastLuxembourg = new ForecastModel(rForecast, 'Luxembourg', 49.63319, 6.26697);
+        var mForecastBruxelles = new ForecastModel(rForecast, 'Bruxelles', 50.84427, 4.37485);
+        var vtForecast = content.addView(new ForecastTileView("#ForecastView"));
+        mForecastNeufchateau.addListener(vtForecast);
+        mForecastLuxembourg.addListener(vtForecast);
+        mForecastBruxelles.addListener(vtForecast);
+        mForecastNeufchateau.addListener(content.addView(new ForecastSmallTileView("#NeufForecastSmallView")));
+        mForecastLuxembourg.addListener(content.addView(new ForecastSmallTileView("#LuxForecastSmallView")));
+        mForecastBruxelles.addListener(content.addView(new ForecastSmallTileView("#BxlForecastSmallView")));
+        mForecastNeufchateau.initialize();
+        mForecastLuxembourg.initialize();
+        mForecastBruxelles.initialize();
+//*/
+        /* Radio Router*/
+///*    
+        var rRadio = new RadioRouter();
+        
+        var mRadio = new RadioModel(rRadio);
+        mRadio.addListener(content.addView(new RadioTileView("#RadioTileView")));
+        mRadio.initialize();
+//*/
+});
+
+    </script>
+</head>
+<body class="tile-area-scheme-dark">
+
+    <ul class="t-menu compact" style="margin-right: 10px; position: fixed; top: 35px; left: 0px">
+        <li><a href="javascript:content.render('icon');"><span class="mif-apps icon"></span></a></li>
+        <li><a href="javascript:content.render('main');"><span class="mif-widgets icon"></span></a></li>
+        <li><a href="javascript:content.render('computer');"><span class="mif-laptop icon"></span></a></li>
+        <li><a href="javascript:content.render('calendar');"><span class="mif-calendar icon"></span></a></li>
+        <li><a href="javascript:content.render('forecast');"><span class="mif-onedrive icon"></span></a></li>
+        <li><a href="./Radio"><span class="mif-music icon"></span></a></li>
+        <!-- <li><a href="./Scanner"><span class="mif-printer icon"></span></a></li> -->
+        <li><a href="#"><span class="mif-file-picture icon"></span></a></li>
+        <li><a href="#"><span class="mif-chart-line icon"></span></a></li>
+    </ul>
+
+    <div id="content" class="fg-white"></div>
+
+</body>
+</html>
